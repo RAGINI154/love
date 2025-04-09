@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 17th Birthday Ragini!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary-color: #e75480;
+      --secondary-color: #ff66b3;
+      --bg-gradient: linear-gradient(135deg, #ffe6f0, #ffe0f7, #fad0e1);
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      background: linear-gradient(45deg, rgba(255,230,240,0.8), rgba(255,224,247,0.8));
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23e75480" fill-opacity="0.1" d="M30,30 Q50,10 70,30 T90,50 Q70,70 50,90 T10,50 Q30,30 50,10 Z"></path></svg>');
+      background-size: 100px 100px;
+      opacity: 0.3;
+    }
+    
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      color: var(--primary-color);
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    h2 {
+      font-weight: 300;
+      margin-top: 15px;
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      color: #666;
+      position: relative;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+      gap: 25px;
+      padding: 30px;
+      max-width: 1300px;
+      margin: auto;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transition: all 0.4s ease;
+      aspect-ratio: 1/1;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      border-radius: 0 0 20px 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+    
+    .message {
+      text-align: center;
+      padding: clamp(20px, 5vw, 40px);
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      line-height: 1.8;
+      max-width: min(90%, 800px);
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .message::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(231,84,128,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 1em;
+      color: #777;
+      position: relative;
+      margin-top: 50px;
+    }
+    
+    .heart {
+      color: var(--primary-color);
+      font-size: 2em;
+      cursor: pointer;
+      user-select: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      margin: 10px 0;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .heart:hover {
+      transform: scale(1.3);
+      filter: drop-shadow(0 0 8px rgba(231,84,128,0.5));
+    }
+    
+    .secret-message {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      font-style: italic;
+      font-size: 1.3em;
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .love-pulse {
+      color: var(--primary-color);
+      animation: lovePulse 1.5s ease-in-out infinite;
+      display: inline-block;
+    }
+    
+    @keyframes lovePulse {
+      0%, 100% { transform: scale(1); color: var(--primary-color); text-shadow: 0 0 10px rgba(231,84,128,0.5)); }
+      50% { transform: scale(1.15); color: var(--secondary-color); text-shadow: 0 0 20px rgba(255,102,179,0.7)); }
+    }
+    
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0;
+      top: 0;
+      z-index: 9999;
+      animation: confettiFall 5s linear forwards;
+    }
+    
+    @keyframes confettiFall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .birthday-cake {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      display: inline-block;
+      margin: 0 5px;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .emoji-rain {
+      position: fixed;
+      font-size: 24px;
+      z-index: 100;
+      pointer-events: none;
+      animation: emojiRain linear forwards;
+    }
+    
+    @keyframes emojiRain {
+      to { transform: translateY(100vh); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gallery {
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .message {
+        padding: 20px;
+        margin: 20px auto;
+      }
+      
+      footer {
+        padding: 20px;
+      }
+    }
+    
+    /* Loading animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    .loader-content {
+      text-align: center;
+    }
+    
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(231, 84, 128, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      animation: spin 1s ease-in-out infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <h2 style="color: var(--primary-color);">Loading the celebration...</h2>
+    </div>
+  </div>
+
+  <header class="animate__animated animate__fadeIn">
+    <h1 class="floating">Happy 17th Birthday, Ragini!</h1>
+    <h2>Wishing you all the happiness and smiles today and always ✨</h2>
+    <div style="font-size: 2em; margin-top: 20px;">
+      <span class="birthday-cake" style="animation-delay: 0.1s;">🎂</span>
+      <span class="birthday-cake" style="animation-delay: 0.3s;">🎉</span>
+      <span class="birthday-cake" style="animation-delay: 0.5s;">🎁</span>
+      <span class="birthday-cake" style="animation-delay: 0.7s;">✨</span>
+      <span class="birthday-cake" style="animation-delay: 0.9s;">🥳</span>
+    </div>
+  </header>
+
+  <section class="gallery">
+    <div class="gallery-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+      <img src="WhatsApp Image 2025-04-10 at 01.54.17_671288a3.jpg" alt="Ragini smiling" loading="lazy">
+    </div>
+    <div class="gallery-item animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+      <img src="WhatsApp Image 2025-04-10 at 01.54.18_5c80c2e2.jpg" alt="Ragini enjoying" loading="lazy">
+    </div>
+    <div class="gallery-item animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+      <img src="WhatsApp Image 2025-04-10 at 01.54.18_80ae98f1.jpg" alt="Ragini posing" loading="lazy">
+    </div>
+    <div class="gallery-item animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+      <img src="WhatsApp Image 2025-04-10 at 01.54.18_e40597de.jpg" alt="Ragini laughing" loading="lazy">
+    </div>
+    <div class="gallery-item animate__animated animate__fadeInUp" style="animation-delay: 1s;">
+      <img src="WhatsApp Image 2025-04-10 at 01.54.19_6c1cd723.jpg" alt="Ragini celebrating" loading="lazy">
+    </div>
+  </section>
+
+  <section class="message animate__animated animate__fadeIn">
+    <p>
+      Just wanted to say how amazing you are. You're the kind of person who lights up every room just by being in it.
+      Seeing you smile makes the day instantly better. I hope your birthday is as special and beautiful as you are.
+      Here's to many more adventures, laughter, and good vibes. You deserve the world, Ragini. Keep shining. 💖
+    </p>
+    <p style="margin-top: 20px; font-weight: 500;">
+      May this year bring you endless joy, success in all you do, and dreams that come true! 
+      <span style="display: inline-block;" class="love-pulse">💫</span>
+    </p>
+  </section>
+
+  <footer class="animate__animated animate__fadeIn">
+    Made with <span class="love-pulse">❤️</span> Just for you<br>
+    <span class="heart" onclick="toggleSecret(); createConfetti();">💗</span>
+    <div class="secret-message" id="secretMessage">
+      <span id="aniText">– from your Aniii <span class="love-pulse">💫</span></span>
+    </div>
+  </footer>
+
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+        createConfetti();
+      }, 1500);
+    });
+
+    function toggleSecret() {
+      const secret = document.getElementById('secretMessage');
+      const aniText = document.getElementById('aniText');
+      if (secret.style.display === 'block') {
+        secret.style.display = 'none';
+        aniText.classList.remove('love-pulse');
+      } else {
+        secret.style.display = 'block';
+        aniText.classList.add('love-pulse');
+        createEmojiRain();
+        playSound();
+      }
+    }
+
+    function createConfetti() {
+      const colors = ['#e75480', '#ff9eb7', '#ff66b3', '#ff99cc', '#ffb3d9'];
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = Math.random() * 10 + 5 + 'px';
+        confetti.style.height = Math.random() * 10 + 5 + 'px';
+        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    }
+
+    function createEmojiRain() {
+      const emojis = ['💖', '✨', '🌸', '🎀', '💫', '🥰', '💗', '💝'];
+      for (let i = 0; i < 30; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji-rain';
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = -30 + 'px';
+        emoji.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        emoji.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(emoji);
+        
+        setTimeout(() => {
+          emoji.remove();
+        }, 5000);
+      }
+    }
+
+    function playSound() {
+      // Create a simple sound effect
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.2);
+      
+      gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      
+      oscillator.start();
+      oscillator.stop(audioCtx.currentTime + 0.5);
+    }
+
+    // Add a simple music player
+    document.addEventListener('DOMContentLoaded', function() {
+      const musicButton = document.createElement('button');
+      musicButton.innerHTML = '🎵 Play Music';
+      musicButton.style.position = 'fixed';
+      musicButton.style.bottom = '20px';
+      musicButton.style.right = '20px';
+      musicButton.style.zIndex = '1000';
+      musicButton.style.padding = '10px 15px';
+      musicButton.style.borderRadius = '20px';
+      musicButton.style.border = 'none';
+      musicButton.style.background = 'var(--primary-color)';
+      musicButton.style.color = 'white';
+      musicButton.style.cursor = 'pointer';
+      musicButton.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+      musicButton.style.transition = 'all 0.3s ease';
+      
+      musicButton.addEventListener('mouseover', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      
+      musicButton.addEventListener('mouseout', function() {
+        this.style.transform = 'scale(1)';
+      });
+      
+      let audio = null;
+      let isPlaying = false;
+      
+      musicButton.addEventListener('click', function() {
+        if (!isPlaying) {
+          if (!audio) {
+            audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+            audio.loop = true;
+          }
+          audio.play();
+          this.innerHTML = '🔊 Pause Music';
+          isPlaying = true;
+        } else {
+          audio.pause();
+          this.innerHTML = '🎵 Play Music';
+          isPlaying = false;
+        }
+      });
+      
+      document.body.appendChild(musicButton);
+    });
+  </script>
+</body>
+</html>
